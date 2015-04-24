@@ -14,8 +14,7 @@ import android.widget.TextView;
 
 import com.example.victor.cra.R;
 import com.example.victor.cra.app.App;
-import com.example.victor.cra.rest.model.ApiResponse;
-import com.squareup.picasso.Picasso;
+import com.example.victor.cra.model.Nota;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -57,41 +56,27 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.inject(this);
-
-
     }
 
     @OnClick(R.id.activity_main_search_button)
-    protected void onSearchClick()
-    {
-        if (!searchEditText.getText().toString().equals(""))
-        {
-            App.getRestClient().getDisciplinaService().getDisciplina(searchEditText.getText().toString(), new Callback<ApiResponse>()
-            {
+    protected void onSearchClick() {
+        if (!searchEditText.getText().toString().equals("")) {
+            App.getRestClient().getNotaService().listNotas(searchEditText.getText().toString(), new Callback<Nota>() {
                 @Override
-                public void success(ApiResponse apiResponse, Response response)
-                {
-                    getActionBar().setTitle(apiResponse.getAluno().getMatricula());
-//                    countryTextView.setText(apiResponse.getSys().getStrCountry());
+                public void success(Nota apiResponse, Response response) {
 
-//                    if (!apiResponse.getWeather().isEmpty())
-//                    {
-//                        Picasso.with(MainActivity.this).load("http://openweathermap.org/img/w/" + apiResponse.getWeather().get(0).getStrIconName() + ".png").into(iconImageView);
-//                        weatherTextView.setText(apiResponse.getWeather().get(0).getStrDesc());
-//                    }
 
                     sunsetTextView.setText("Ninja");
                     sunriseTextView.setText("Ninja");
 
                     searchEditText.setText("");
-                    Log.e(TAG, "City name : " + apiResponse.getDisciplina().getNome());
+                    Log.e(TAG, "City name : " + apiResponse.getNota());
                     dataLayout.setVisibility(View.VISIBLE);
                     weatherLayout.setVisibility(View.VISIBLE);
                 }
 
                 @Override
-                public void failure(RetrofitError error)
-                {
+                public void failure(RetrofitError error) {
                     Log.e(TAG, "Error : " + error.getMessage());
                     searchEditText.setText("");
                     dataLayout.setVisibility(View.GONE);

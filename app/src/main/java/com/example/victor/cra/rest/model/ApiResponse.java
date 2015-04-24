@@ -1,23 +1,20 @@
 package com.example.victor.cra.rest.model;
 
-import com.example.victor.cra.model.Disciplina;
-import com.example.victor.cra.model.Aluno;
+import com.example.victor.cra.model.Nota;
 import com.google.gson.annotations.SerializedName;
 import org.parceler.Parcel;
+import java.util.ArrayList;
 
 @Parcel
 public class ApiResponse {
-    @SerializedName("disciplina")
-    private Disciplina disciplina;
+    @SerializedName("nota")
+    private ArrayList<Nota> nota;
 
-    @SerializedName("aluno")
-    private Aluno aluno;
-
-    public Disciplina getDisciplina() {
-        return disciplina;
+    public ArrayList<Nota> getNota() {
+        return nota;
     }
 
-    public Aluno getAluno() {
-        return aluno;
+    public void setNota(ArrayList<Nota> nota) {
+        this.nota = nota;
     }
 }
