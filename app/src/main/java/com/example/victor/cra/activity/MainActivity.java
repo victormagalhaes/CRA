@@ -16,6 +16,8 @@ import com.example.victor.cra.R;
 import com.example.victor.cra.app.App;
 import com.example.victor.cra.model.Nota;
 
+import java.util.List;
+
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
@@ -61,16 +63,16 @@ public class MainActivity extends Activity {
     @OnClick(R.id.activity_main_search_button)
     protected void onSearchClick() {
         if (!searchEditText.getText().toString().equals("")) {
-            App.getRestClient().getNotaService().listNotas(searchEditText.getText().toString(), new Callback<Nota>() {
+            App.getRestClient().getNotaService().listNotas(searchEditText.getText().toString(), new Callback<List<Nota>>() {
                 @Override
-                public void success(Nota apiResponse, Response response) {
+                public void success(List<Nota> apiResponse, Response response) {
 
 
                     sunsetTextView.setText("Ninja");
                     sunriseTextView.setText("Ninja");
 
                     searchEditText.setText("");
-                    Log.e(TAG, "City name : " + apiResponse.getNota());
+//                    Log.e(TAG, "City name : " + apiResponse.getNota());
                     dataLayout.setVisibility(View.VISIBLE);
                     weatherLayout.setVisibility(View.VISIBLE);
                 }

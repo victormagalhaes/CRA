@@ -15,6 +15,9 @@ public class App extends Application {
     }
 
     public static RestClient getRestClient() {
+        if (restClient == null) {
+            restClient = new RestClient();
+        }
         return restClient;
     }
 }

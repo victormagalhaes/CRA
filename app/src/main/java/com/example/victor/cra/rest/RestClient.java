@@ -7,7 +7,7 @@ import retrofit.RestAdapter;
 import retrofit.converter.GsonConverter;
 
 public class RestClient {
-    private static final String BASE_URL = "http://localhost:8000/";
+    private static final String BASE_URL = "http://192.168.1.105:8000/";
     private NotaService apiService;
 
     public RestClient() {

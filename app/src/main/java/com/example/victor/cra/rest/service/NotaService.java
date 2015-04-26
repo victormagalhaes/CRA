@@ -10,5 +10,5 @@ import retrofit.Callback;
 
 public interface NotaService {
     @GET("/notas/")
-    List<Nota> listNotas(@Query("aluno") String user, Callback<Nota> callback);
+    void listNotas(@Query("aluno") String user, Callback<List<Nota>> callback);
 }
