@@ -18,6 +18,7 @@ import com.example.victor.cra.R;
 import com.example.victor.cra.app.App;
 import com.example.victor.cra.model.Nota;
 import com.example.victor.cra.util.CustomGrid;
+import com.example.victor.cra.util.SharedPreferencesHelper;
 
 import java.util.List;
 
@@ -33,30 +34,6 @@ public class MainActivity extends Activity {
     private final static String TAG = MainActivity.class.getSimpleName();
     boolean isLogged = false;
 
-//    @InjectView(R.id.activity_main_data)
-//    protected RelativeLayout dataLayout;
-//
-//    @InjectView(R.id.activity_main_weather)
-//    protected RelativeLayout weatherLayout;
-//
-//    @InjectView(R.id.activity_main_search)
-//    protected EditText searchEditText;
-//
-//    @InjectView(R.id.activity_main_sys_country_value)
-//    protected TextView countryTextView;
-//
-//    @InjectView(R.id.activity_main_sys_sunrise_value)
-//    protected TextView sunriseTextView;
-//
-//    @InjectView(R.id.activity_main_sys_sunset_value)
-//    protected TextView sunsetTextView;
-//
-//    @InjectView(R.id.activity_main_weather_icon)
-//    protected ImageView iconImageView;
-//
-//    @InjectView(R.id.activity_main_weather_text)
-//    protected TextView weatherTextView;
-
     GridView grid;
     String[] web = {
             "Login",
@@ -65,16 +42,8 @@ public class MainActivity extends Activity {
             "Excluir",
             "Alterar",
             "CR"
-    } ;
+    };
 
-    String[] webLogged = {
-            "Logout",
-            "Listar",
-            "Incluir",
-            "Excluir",
-            "Alterar",
-            "CR"
-    } ;
     int[] imageId = {
             R.drawable.image1,
             R.drawable.image2,
@@ -84,23 +53,13 @@ public class MainActivity extends Activity {
             R.drawable.image6
     };
 
-    int[] imageIdLogged = {
-            R.drawable.image7,
-            R.drawable.image2,
-            R.drawable.image3,
-            R.drawable.image4,
-            R.drawable.image5,
-            R.drawable.image6
-    };
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        SharedPreferences prefs = getSharedPreferences("USER_LOGIN", Context.MODE_PRIVATE);
-        isLogged = prefs.getBoolean("USER_LOGIN", false);
+        SharedPreferencesHelper sp = new SharedPreferencesHelper(MainActivity.this);
+        isLogged = sp.getBoolean("USER_LOGIN");
 
         CustomGrid adapter = new CustomGrid(MainActivity.this, web, imageId);
         grid = (GridView) findViewById(R.id.grid);
@@ -144,13 +103,12 @@ public class MainActivity extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
             case 1:
-                // setando em isLogged se o usuário está caso ele venha de Login
-                SharedPreferences prefs = getSharedPreferences("USER_LOGIN", Context.MODE_PRIVATE);
-                isLogged = prefs.getBoolean("USER_LOGIN", false);
+                SharedPreferencesHelper sp = new SharedPreferencesHelper(MainActivity.this);
+                isLogged = sp.getBoolean("USER_LOGIN");
 
                 if (isLogged) {
                     web[0] = "Logout";
-                    CustomGrid adapter = new CustomGrid(MainActivity.this, webLogged, imageIdLogged);
+                    CustomGrid adapter = new CustomGrid(MainActivity.this, web, imageId);
                     grid = (GridView) findViewById(R.id.grid);
                     grid.setAdapter(adapter);
                 }
@@ -159,54 +117,4 @@ public class MainActivity extends Activity {
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
-
-//    @OnClick(R.id.activity_main_search_button)
-//    protected void onSearchClick() {
-//        if (!searchEditText.getText().toString().equals("")) {
-//            App.getRestClient().getNotaService().listNotas(searchEditText.getText().toString(), new Callback<List<Nota>>() {
-//                @Override
-//                public void success(List<Nota> apiResponse, Response response) {
-//
-//
-//                    sunsetTextView.setText("Ninja");
-//                    sunriseTextView.setText("Ninja");
-//
-//                    searchEditText.setText("");
-////                    Log.e(TAG, "City name : " + apiResponse.getNota());
-//                    dataLayout.setVisibility(View.VISIBLE);
-//                    weatherLayout.setVisibility(View.VISIBLE);
-//                }
-//
-//                @Override
-//                public void failure(RetrofitError error) {
-//                    Log.e(TAG, "Error : " + error.getMessage());
-//                    searchEditText.setText("");
-//                    dataLayout.setVisibility(View.GONE);
-//                    weatherLayout.setVisibility(View.GONE);
-//                }
-//            });
-//        }
-//    }
-
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.menu_main, menu);
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
-//
-//        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
-//
-//        return super.onOptionsItemSelected(item);
-//    }
 }

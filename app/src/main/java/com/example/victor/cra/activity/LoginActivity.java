@@ -12,6 +12,7 @@ import com.example.victor.cra.R;
 import com.example.victor.cra.app.App;
 import com.example.victor.cra.model.Aluno;
 import com.example.victor.cra.model.Nota;
+import com.example.victor.cra.util.SharedPreferencesHelper;
 
 import java.util.List;
 
@@ -48,10 +49,8 @@ public class LoginActivity extends Activity {
                         searchEditText.setText("");
                         Toast.makeText(LoginActivity.this, "Tente outra vez", Toast.LENGTH_SHORT).show();
                     } else if (resultado.get(0).getMatricula().toString().equals(searchEditText.getText().toString())) {
-                        SharedPreferences pref = getSharedPreferences("USER_LOGIN", Context.MODE_PRIVATE);
-                        SharedPreferences.Editor editor = pref.edit();
-                        editor.putBoolean("USER_LOGIN", true);
-                        editor.commit();
+                        SharedPreferencesHelper sp = new SharedPreferencesHelper(LoginActivity.this);
+                        sp.set("USER_LOGIN", true);
 
                         finish();
                     }

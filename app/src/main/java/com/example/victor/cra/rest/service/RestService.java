@@ -11,16 +11,10 @@ import retrofit.Callback;
 
 
 
-public interface NotaService {
+public interface RestService {
     @GET("/notas/")
     void listNotas(@Query("aluno") String user, Callback<List<Nota>> callback);
 
     @GET("/alunos/")
     void listAlunos(@Query("matricula") String user, Callback<List<Aluno>> callback);
-
-
-
-
-
-
 }
