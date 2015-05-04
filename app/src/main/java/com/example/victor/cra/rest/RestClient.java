@@ -1,13 +1,19 @@
 package com.example.victor.cra.rest;
 
+import com.example.victor.cra.model.Aluno;
 import com.example.victor.cra.rest.service.NotaService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
+import java.util.List;
+
 import retrofit.RestAdapter;
 import retrofit.converter.GsonConverter;
+import retrofit.Callback;
+
 
 public class RestClient {
-    private static final String BASE_URL = "http://192.168.1.105:8000/";
+    private static final String BASE_URL = "http://10.1.209.39:8000/";
     private NotaService apiService;
 
     public RestClient() {
@@ -21,9 +27,17 @@ public class RestClient {
                 .build();
 
         apiService = restAdapter.create(NotaService.class);
+
     }
 
     public NotaService getNotaService() {
         return apiService;
     }
+
+    public void getAluno(String user, Callback<List<Aluno>> cb){
+
+        apiService.listAlunos(user, cb);
+
+    }
+
 }

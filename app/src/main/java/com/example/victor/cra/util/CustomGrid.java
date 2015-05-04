@@ -1,4 +1,4 @@
-package com.example.victor.cra.activity;
+package com.example.victor.cra.util;
 
 import android.content.Context;
 import android.view.LayoutInflater;
