@@ -1,17 +1,13 @@
 package com.example.victor.cra.activity;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.victor.cra.R;
 import com.example.victor.cra.app.App;
 import com.example.victor.cra.model.Aluno;
-import com.example.victor.cra.model.Nota;
 import com.example.victor.cra.util.SharedPreferencesHelper;
 
 import java.util.List;
@@ -51,6 +47,7 @@ public class LoginActivity extends Activity {
                     } else if (resultado.get(0).getMatricula().toString().equals(searchEditText.getText().toString())) {
                         SharedPreferencesHelper sp = new SharedPreferencesHelper(LoginActivity.this);
                         sp.set("USER_LOGIN", true);
+                        sp.set("MATRICULA", resultado.get(0).getMatricula().toString());
 
                         finish();
                     }
