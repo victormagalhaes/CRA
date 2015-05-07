@@ -2,7 +2,7 @@ package com.example.victor.cra.app;
 
 import android.app.Application;
 
-import com.example.victor.cra.rest.RestClient;
+import com.example.victor.cra.http.RestClient;
 
 public class App extends Application {
     private static RestClient restClient;

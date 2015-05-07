@@ -1,8 +1,8 @@
-package com.example.victor.cra.rest;
+package com.example.victor.cra.http;
 
 import com.example.victor.cra.model.Aluno;
 import com.example.victor.cra.model.Nota;
-import com.example.victor.cra.rest.service.RestService;
+import com.example.victor.cra.http.service.RestService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -14,7 +14,7 @@ import retrofit.Callback;
 
 
 public class RestClient {
-    private static final String BASE_URL = "http://192.168.1.146:8000/";
+    private static final String BASE_URL = "http://192.168.56.1:8000/"; // Esse IP é o IP da máquina virtual do genymotion procurando o meu localhost =]
     private RestService apiService;
 
     public RestClient() {

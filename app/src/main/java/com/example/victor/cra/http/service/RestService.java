@@ -1,7 +1,6 @@
-package com.example.victor.cra.rest.service;
+package com.example.victor.cra.http.service;
 
 import retrofit.http.GET;
-import retrofit.http.Path;
 import retrofit.http.Query;
 
 import com.example.victor.cra.model.Aluno;

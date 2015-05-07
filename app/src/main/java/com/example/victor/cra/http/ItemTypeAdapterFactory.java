@@ -1,4 +1,4 @@
-package com.example.victor.cra.rest;
+package com.example.victor.cra.http;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
