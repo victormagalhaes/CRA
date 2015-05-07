@@ -31,7 +31,6 @@ import retrofit.client.Response;
 
 
 public class MainActivity extends Activity {
-    private final static String TAG = MainActivity.class.getSimpleName();
     boolean isLogged = false;
 
     GridView grid;
@@ -68,6 +67,8 @@ public class MainActivity extends Activity {
         grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                SharedPreferencesHelper sp = new SharedPreferencesHelper(MainActivity.this);
+
                 if (web[position] == "Login") {
                     Intent it = new Intent(MainActivity.this, LoginActivity.class);
                     startActivityForResult(it, 1);
@@ -83,11 +84,9 @@ public class MainActivity extends Activity {
 
                 } else if (web[position] == "Logout" && isLogged) {
                     web[0] = "Login";
-                    isLogged = false;
-                    SharedPreferences pref = getSharedPreferences("USER_LOGIN", Context.MODE_PRIVATE);
-                    SharedPreferences.Editor editor = pref.edit();
-                    editor.putBoolean("USER_LOGIN",false);
-                    editor.commit();
+                    imageId[0] = R.drawable.image1;
+                    sp.set("USER_LOGIN", false);
+                    isLogged = sp.getBoolean("USER_LOGIN");
 
                     CustomGrid adapter = new CustomGrid(MainActivity.this, web, imageId);
                     grid = (GridView) findViewById(R.id.grid);
@@ -108,6 +107,7 @@ public class MainActivity extends Activity {
 
                 if (isLogged) {
                     web[0] = "Logout";
+                    imageId[0] = R.drawable.image7;
                     CustomGrid adapter = new CustomGrid(MainActivity.this, web, imageId);
                     grid = (GridView) findViewById(R.id.grid);
                     grid.setAdapter(adapter);
