@@ -5,6 +5,7 @@
     <LinearLayout
         android:id="@+id/back"
         android:tag="back"
+        android:background="#ff0000"
         style="@style/MyListBackContent"
         >
 
@@ -13,32 +14,26 @@
             android:layout_height="wrap_content"
             android:id="@+id/swipe_button1"
             style="@style/MyListButtonAction"
-            android:text="Button 1"/>
+            android:text="Alterar Nota"/>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/swipe_button2"
             style="@style/MyListButtonAction"
-            android:text="Button 2"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/swipe_button3"
-            style="@style/MyListButtonAction"
-            android:text="Button 3"/>
+            android:text="Excluir"/>
 
     </LinearLayout>
     <RelativeLayout
         android:orientation="vertical"
         android:id="@+id/front"
         android:tag="front"
+        android:background="#ffffff"
         style="@style/MyListFrontContent">
 
         <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             style="@style/MyListTitle"
             android:id="@+id/example_itemname"/>
 

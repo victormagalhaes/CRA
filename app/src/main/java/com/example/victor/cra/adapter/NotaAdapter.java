@@ -1,4 +1,4 @@
-package com.example.victor.cra.util.adapter;
+package com.example.victor.cra.adapter;
 
 import java.util.List;
 import android.app.Activity;
@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,10 +30,9 @@ public class NotaAdapter extends ArrayAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
         NotaHolder holder = null;
+
         View row = convertView;
-        holder = null;
 
         if(row == null) {
             LayoutInflater inflater = ((Activity) context).getLayoutInflater();
@@ -45,7 +43,6 @@ public class NotaAdapter extends ArrayAdapter {
             holder.itemName = (TextView)row.findViewById(R.id.example_itemname);
             holder.button1=(Button)row.findViewById(R.id.swipe_button1);
             holder.button2=(Button)row.findViewById(R.id.swipe_button2);
-            holder.button3=(Button)row.findViewById(R.id.swipe_button3);
             row.setTag(holder);
         } else {
             holder = (NotaHolder) row.getTag();
@@ -72,25 +69,14 @@ public class NotaAdapter extends ArrayAdapter {
             }
         });
 
-        holder.button3.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                Toast.makeText(context, "Button 3 Clicked",Toast.LENGTH_SHORT);
-            }
-        });
-
         return row;
 
     }
 
     static class NotaHolder{
-
         TextView itemName;
         Button button1;
         Button button2;
-        Button button3;
     }
 
 }
