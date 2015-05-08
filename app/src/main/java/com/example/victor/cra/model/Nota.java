@@ -37,4 +37,9 @@ public class Nota {
     public void setDisciplina(Disciplina disciplina) {
         this.disciplina = disciplina;
     }
+
+    @Override
+    public String toString() {
+        return this.getDisciplina().getNome() + " - " + this.getNota().toString();
+    }
 }

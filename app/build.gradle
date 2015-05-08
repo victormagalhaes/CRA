@@ -21,6 +21,10 @@ android {
     packagingOptions {
         exclude 'META-INF/services/javax.annotation.processing.Processor'
     }
+
+    repositories {
+        maven { url 'http://clinker.47deg.com/nexus/content/groups/public' }
+    }
 }
 
 dependencies {
@@ -30,4 +34,7 @@ dependencies {
     compile 'org.parceler:parceler:0.2.13'
     compile 'com.squareup.picasso:picasso:2.3.4'
     compile 'com.jakewharton:butterknife:5.1.2'
+    compile ('com.fortysevendeg.swipelistview:swipelistview:1.0-SNAPSHOT@aar') {
+        transitive = true
+    }
 }
