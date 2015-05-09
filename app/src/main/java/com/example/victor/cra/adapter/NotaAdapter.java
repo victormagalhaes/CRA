@@ -3,6 +3,7 @@ package com.example.victor.cra.adapter;
 import java.util.List;
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,13 +13,21 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.victor.cra.R;
+import com.example.victor.cra.app.App;
 import com.example.victor.cra.model.Nota;
+
+import org.json.JSONObject;
+
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 public class NotaAdapter extends ArrayAdapter {
 
     int resource;
     List data;
     Context context;
+    View row = null;
 
     public NotaAdapter(Context context, int resource, List data) {
         super(context, resource, data);
@@ -32,7 +41,7 @@ public class NotaAdapter extends ArrayAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         NotaHolder holder = null;
 
-        View row = convertView;
+        row = convertView;
 
         if(row == null) {
             LayoutInflater inflater = ((Activity) context).getLayoutInflater();
@@ -48,24 +57,34 @@ public class NotaAdapter extends ArrayAdapter {
             holder = (NotaHolder) row.getTag();
         }
 
-        Nota itemdata = (Nota) data.get(position);
+        final Nota itemdata = (Nota) data.get(position);
         holder.itemName.setText(itemdata.toString());
 
         holder.button1.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
-                Toast.makeText(context, "Button 1 Clicked",Toast.LENGTH_SHORT).show();
             }
         });
 
         holder.button2.setOnClickListener(new View.OnClickListener() {
-
             @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                Toast.makeText(context, "Button 2 Clicked",Toast.LENGTH_SHORT).show();
+            public void onClick(final View v) {
+                App.getRestClient().deleteNota(itemdata.getId(), new Callback() {
+                    @Override
+                    public void success(Object o, Response response) {
+                        View parent = (View) v.getParent().getParent();
+                        parent.setVisibility(View.GONE);
+                        remove(parent);
+                        Toast.makeText(context, "Feito", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void failure(RetrofitError error) {
+                        Log.d("Erro Retrofit", error.toString());
+                        Toast.makeText(context, error.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
 

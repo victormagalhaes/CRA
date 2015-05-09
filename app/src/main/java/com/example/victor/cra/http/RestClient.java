@@ -6,11 +6,14 @@ import com.example.victor.cra.http.service.RestService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import org.json.JSONObject;
+
 import java.util.List;
 
 import retrofit.RestAdapter;
 import retrofit.converter.GsonConverter;
 import retrofit.Callback;
+import retrofit.mime.TypedString;
 
 
 public class RestClient {
@@ -36,5 +39,13 @@ public class RestClient {
 
     public void getAluno(String user, Callback<List<Aluno>> cb){
         apiService.listAlunos(user, cb);
+    }
+
+    public void alterNota(int idNota, float nota, Callback cb) {
+        apiService.alterNota(idNota, nota, cb);
+    }
+
+    public void deleteNota(int idNota, Callback cb) {
+        apiService.deleteNota(idNota, cb);
     }
 }

@@ -5,7 +5,7 @@
     <LinearLayout
         android:id="@+id/back"
         android:tag="back"
-        android:background="#ff0000"
+        android:background="#ff6666"
         style="@style/MyListBackContent"
         >
 

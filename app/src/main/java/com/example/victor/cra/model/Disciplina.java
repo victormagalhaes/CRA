@@ -8,11 +8,18 @@ import java.io.Serializable;
 
 @Parcel
 public class Disciplina {
+    @SerializedName("id")
+    private int id;
+
     @SerializedName("nome")
     private String nome;
 
     @SerializedName("carga_horaria")
     private int cargaHoraria;
+
+    public int getId() {
+        return id;
+    }
 
     public String getNome() {
         return nome;

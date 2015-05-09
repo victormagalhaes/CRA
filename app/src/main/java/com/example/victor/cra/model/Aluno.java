@@ -8,8 +8,15 @@ import java.io.Serializable;
 
 @Parcel
 public class Aluno {
+    @SerializedName("id")
+    private int id;
+
     @SerializedName("matricula")
     private String matricula;
+
+    public int getId() {
+        return id;
+    }
 
     public String getMatricula()
     {

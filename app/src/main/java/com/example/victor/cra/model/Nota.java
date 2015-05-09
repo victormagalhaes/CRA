@@ -5,6 +5,8 @@ import org.parceler.Parcel;
 
 @Parcel
 public class Nota {
+    @SerializedName("id")
+    private int id;
     @SerializedName("nota")
     private Double nota;
 
@@ -13,6 +15,10 @@ public class Nota {
 
     @SerializedName("disciplina")
     private Disciplina disciplina;
+
+    public int getId() {
+        return id;
+    }
 
     public Double getNota() {
         return nota;

@@ -10,6 +10,7 @@ import com.example.victor.cra.model.Nota;
 import com.example.victor.cra.util.SharedPreferencesHelper;
 import com.example.victor.cra.adapter.NotaAdapter;
 import com.fortysevendeg.swipelistview.SwipeListView;
+import com.fortysevendeg.swipelistview.SwipeListViewListener;
 
 import java.util.List;
 
