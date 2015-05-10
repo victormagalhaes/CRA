@@ -21,10 +21,13 @@
 
         <activity
             android:name=".activity.LoginActivity"
-            android:label="Tela de Login" />
+            android:label="Tela de login" />
         <activity
             android:name=".activity.ListaNotasActivity"
-            android:label="Listagem de Notas e Matérias" />
+            android:label="Listagem de matérias e notas" />
+        <activity
+            android:name=".activity.AlterarNotaActivity"
+            android:label="Alterar nota" />
     </application>
 
 </manifest>

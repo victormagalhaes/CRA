@@ -41,7 +41,7 @@ public class RestClient {
         apiService.listAlunos(user, cb);
     }
 
-    public void alterNota(int idNota, float nota, Callback cb) {
+    public void alterNota(int idNota, Nota nota, Callback cb) {
         apiService.alterNota(idNota, nota, cb);
     }
 

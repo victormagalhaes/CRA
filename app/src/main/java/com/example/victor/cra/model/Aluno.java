@@ -7,7 +7,7 @@ import org.parceler.Parcel;
 import java.io.Serializable;
 
 @Parcel
-public class Aluno {
+public class Aluno implements Serializable {
     @SerializedName("id")
     private int id;
 
