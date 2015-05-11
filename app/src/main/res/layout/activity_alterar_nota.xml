@@ -18,6 +18,7 @@
         android:textColor="@color/blue_light"
         android:textColorHint="@color/blue_dark"
         android:background="@null"
+        android:inputType="phone"
         android:hint="Digite a nota"/>
 
     <TextView

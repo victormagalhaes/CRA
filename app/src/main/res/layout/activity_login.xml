@@ -18,13 +18,14 @@
         android:textColor="@color/blue_light"
         android:textColorHint="@color/blue_dark"
         android:background="@null"
+        android:inputType="number"
         android:hint="Digite sua matrícula"/>
 
     <TextView
         android:id="@+id/activity_main_search_button"
         android:layout_width="60dp"
         android:layout_height="40dp"
-        android:text="Procurar"
+        android:text="Login"
         android:layout_alignParentRight="true"
         android:gravity="center"
         android:textColor="@android:color/white"
