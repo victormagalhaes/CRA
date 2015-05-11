@@ -64,7 +64,8 @@ public class MainActivity extends Activity {
                     Intent itIncluir = new Intent(MainActivity.this, IncluirNotaActivity.class);
                     startActivityForResult(itIncluir, 1);
                 } else if (web[position] == "CR" && isLogged) {
-
+                    Intent itCalculo = new Intent(MainActivity.this, CalculoCRActivity.class);
+                    startActivityForResult(itCalculo, 1);
                 } else if (web[position] == "Logout" && isLogged) {
                     web[0] = "Login";
                     imageId[0] = R.drawable.image1;

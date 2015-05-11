@@ -31,6 +31,9 @@
         <activity
             android:name=".activity.IncluirNotaActivity"
             android:label="Incluir nota" />
+        <activity
+            android:name=".activity.CalculoCRActivity"
+            android:label="Cálculo do CRA" />
     </application>
 
 </manifest>
