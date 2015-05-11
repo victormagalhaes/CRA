@@ -25,7 +25,7 @@ public interface RestService {
     void addNota(@Body Nota nota, Callback<JsonElement> callback);
 
     @GET("/disciplinas/")
-    void listDisciplinas(Callback<List<Disciplina>> callback);
+    void listDisciplinas(@Query("matricula_excluir") String matriculaExcluir, Callback<List<Disciplina>> callback);
 
     @GET("/alunos/")
     void listAlunos(@Query("matricula") String user, Callback<List<Aluno>> callback);

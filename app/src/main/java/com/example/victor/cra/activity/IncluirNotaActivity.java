@@ -41,32 +41,39 @@ public class IncluirNotaActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_incluir_nota);
-
         ButterKnife.inject(this);
 
-        App.getRestClient().getDisciplinas(new Callback<List<Disciplina>>() {
+        SharedPreferencesHelper sp = new SharedPreferencesHelper(IncluirNotaActivity.this);
+        String matricula = sp.getString("MATRICULA");
+
+        App.getRestClient().getDisciplinas(matricula, new Callback<List<Disciplina>>() {
             @Override
             public void success(List<Disciplina> disciplinas, Response response) {
-                ArrayAdapter<Disciplina> adapterDisciplina = new ArrayAdapter<Disciplina>(IncluirNotaActivity.this, android.R.layout.simple_spinner_item, disciplinas);
-                adapterDisciplina.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                if (!disciplinas.isEmpty()) {
+                    ArrayAdapter<Disciplina> adapterDisciplina = new ArrayAdapter<Disciplina>(IncluirNotaActivity.this, android.R.layout.simple_spinner_item, disciplinas);
+                    adapterDisciplina.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-                listaDisciplinasSpinner.setAdapter(adapterDisciplina);
+                    listaDisciplinasSpinner.setAdapter(adapterDisciplina);
 
-                listaDisciplinasSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        disciplinaSelecionada = (Disciplina) listaDisciplinasSpinner.getSelectedItem();
-                    }
+                    listaDisciplinasSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                            disciplinaSelecionada = (Disciplina) listaDisciplinasSpinner.getSelectedItem();
+                        }
 
-                    @Override
-                    public void onNothingSelected(AdapterView<?> parent) {
+                        @Override
+                        public void onNothingSelected(AdapterView<?> parent) {
 
-                    }
-                });
+                        }
+                    });
 
-                SharedPreferencesHelper sp = new SharedPreferencesHelper(IncluirNotaActivity.this);
-                String matricula = sp.getString("MATRICULA");
-                alunoAutenticado = new Aluno(matricula);
+                    SharedPreferencesHelper sp = new SharedPreferencesHelper(IncluirNotaActivity.this);
+                    String matricula = sp.getString("MATRICULA");
+                    alunoAutenticado = new Aluno(matricula);
+                } else {
+                    Toast.makeText(IncluirNotaActivity.this, "Você já incluiu todas as disciplinas!", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
             }
 
             @Override

@@ -36,8 +36,8 @@ public class RestClient {
         apiService.listNotas(user, cb);
     }
 
-    public void getDisciplinas(Callback<List<Disciplina>> cb) {
-        apiService.listDisciplinas(cb);
+    public void getDisciplinas(String matriculaExcluir, Callback<List<Disciplina>> cb) {
+        apiService.listDisciplinas(matriculaExcluir, cb);
     }
 
     public void addNota(Nota nota, Callback<JsonElement> cb) {
