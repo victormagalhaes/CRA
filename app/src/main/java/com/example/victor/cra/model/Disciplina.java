@@ -6,7 +6,6 @@ import org.parceler.Parcel;
 
 import java.io.Serializable;
 
-@Parcel
 public class Disciplina implements Serializable {
     @SerializedName("id")
     private int id;
@@ -27,5 +26,10 @@ public class Disciplina implements Serializable {
 
     public int getCargaHoraria() {
         return cargaHoraria;
+    }
+
+    @Override
+    public String toString() {
+        return this.getNome();
     }
 }

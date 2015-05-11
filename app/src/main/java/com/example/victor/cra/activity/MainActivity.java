@@ -61,11 +61,8 @@ public class MainActivity extends Activity {
                     Intent itListar = new Intent(MainActivity.this, ListaNotasActivity.class);
                     startActivityForResult(itListar, 1);
                 } else if (web[position] == "Incluir" && isLogged) {
-
-                } else if (web[position] == "Excluir" && isLogged) {
-
-                } else if (web[position] == "Alterar" && isLogged) {
-
+                    Intent itIncluir = new Intent(MainActivity.this, IncluirNotaActivity.class);
+                    startActivityForResult(itIncluir, 1);
                 } else if (web[position] == "CR" && isLogged) {
 
                 } else if (web[position] == "Logout" && isLogged) {

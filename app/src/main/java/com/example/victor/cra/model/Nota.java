@@ -5,7 +5,6 @@ import org.parceler.Parcel;
 
 import java.io.Serializable;
 
-@Parcel
 public class Nota implements Serializable {
     @SerializedName("id")
     private int id;
@@ -17,6 +16,12 @@ public class Nota implements Serializable {
 
     @SerializedName("disciplina")
     private Disciplina disciplina;
+
+    public Nota(Double nota, Aluno aluno, Disciplina disciplina) {
+        this.nota = nota;
+        this.aluno = aluno;
+        this.disciplina = disciplina;
+    }
 
     public int getId() {
         return id;

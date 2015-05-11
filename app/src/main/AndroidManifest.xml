@@ -28,6 +28,9 @@
         <activity
             android:name=".activity.AlterarNotaActivity"
             android:label="Alterar nota" />
+        <activity
+            android:name=".activity.IncluirNotaActivity"
+            android:label="Incluir nota" />
     </application>
 
 </manifest>

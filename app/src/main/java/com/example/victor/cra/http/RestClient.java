@@ -1,19 +1,18 @@
 package com.example.victor.cra.http;
 
 import com.example.victor.cra.model.Aluno;
+import com.example.victor.cra.model.Disciplina;
 import com.example.victor.cra.model.Nota;
 import com.example.victor.cra.http.service.RestService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
-import org.json.JSONObject;
+import com.google.gson.JsonElement;
 
 import java.util.List;
 
 import retrofit.RestAdapter;
 import retrofit.converter.GsonConverter;
 import retrofit.Callback;
-import retrofit.mime.TypedString;
 
 
 public class RestClient {
@@ -35,6 +34,14 @@ public class RestClient {
 
     public void getNota(String user, Callback<List<Nota>> cb) {
         apiService.listNotas(user, cb);
+    }
+
+    public void getDisciplinas(Callback<List<Disciplina>> cb) {
+        apiService.listDisciplinas(cb);
+    }
+
+    public void addNota(Nota nota, Callback<JsonElement> cb) {
+        apiService.addNota(nota, cb);
     }
 
     public void getAluno(String user, Callback<List<Aluno>> cb){
