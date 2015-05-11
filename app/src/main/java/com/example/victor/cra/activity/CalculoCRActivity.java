@@ -14,6 +14,7 @@ import com.example.victor.cra.model.Nota;
 import com.example.victor.cra.util.SharedPreferencesHelper;
 import com.fortysevendeg.swipelistview.SwipeListView;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import butterknife.ButterKnife;
@@ -57,7 +58,9 @@ public class CalculoCRActivity extends ActionBarActivity {
                             }
                             Double cra = (Double) somaNumerador/somaDenominador;
                             cargaTextView.setText("Carga horária cumprida = " + somaDenominador.toString());
-                            crTextView.setText("CRA = " + cra.toString());
+
+                            DecimalFormat df = new DecimalFormat("#.00");
+                            crTextView.setText("CRA = " + df.format(cra));
                         } catch (Exception e) {
                             Log.d("Erro", e.toString());
                         }
